@@ -57,7 +57,9 @@ app.post("/send-mail", ValidateEmail, async (req, res) => {
     res.status(200).json({ success: true, message: "Email sent successfully" });
   } catch (error) {
     console.error(`Error sending email here:`, error);
-    res.status(500).json({ success: false, message: "Failed to send email." });
+    res
+      .status(200)
+      .json({ success: false, message: "Failed to send email.", status: 500 });
   }
 });
 
